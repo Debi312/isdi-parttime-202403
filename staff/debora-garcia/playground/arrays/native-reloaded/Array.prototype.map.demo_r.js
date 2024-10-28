@@ -1,12 +1,12 @@
 delete Array.prototype.map
 
-function map(array, callback) {
+Array.prototype.map= function(callback) {
     var mapped = []
 
-    for (var i = 0; i < array.length; i++) {
-        var element = array[i]
+    for (var i = 0; i < this.length; i++) {
+        var element = this[i]
 
-        var mappedElement = callback(element, i, array)
+        var mappedElement = callback(element, i, this)
 
         mapped[i] = mappedElement
     }
@@ -18,7 +18,7 @@ console.info("CASE nums by 2")
 
 var nums = [1, 4, 9, 16]
 
-var numsBy2 = map(nums, function (num) { return num * 2 })
+var numsBy2 = nums.map(function (num) { return num * 2 })
 
 console.debug(nums)
 // Array [1, 4, 9, 16]
@@ -30,7 +30,7 @@ console.info("CASE names to uppercase")
 
 var names = ["JaCk", "pETer", "jOHNnY"]
 
-var normalizedNames = map(names, function (name) { return name.toUpperCase() })
+var normalizedNames = names.map(function (name) { return name.toUpperCase() })
 
 console.debug(names)
 // ["JaCk", "pETer", "jOHNnY"]
@@ -41,7 +41,7 @@ console.info("CASE map elements and other arguments into objects")
 
 var colors = ["red", "green", "blue", "yellow"]
 
-var data = map(colors, function (color, index, colors) {
+var data = colors.map(function (color, index, colors) {
     var o = { color: color, index: index, colors: colors }
 
     return o
