@@ -44,6 +44,10 @@ function Login({ onUserLoggedIn, onRegisterLinkClick }) {
         onRegisterLinkClick()
     }
     return <View tag="main">
+        <section
+            className="items-center justify-center flex flex-col mb-4">
+            <img src="https://koalacareservices.com.au/wp-content/uploads/2023/11/cropped-image-5-2.png" alt="Koala" className="h-24 mb-4 text-center" />
+        </section>
         <Title>Login</Title>
         <FormWithFeedback onSubmit={handleLoginSubmit} message={message}>
 
@@ -54,7 +58,7 @@ function Login({ onUserLoggedIn, onRegisterLinkClick }) {
             <SubmitButton>Login</SubmitButton>
         </FormWithFeedback>
 
-        <Link onClick={handleRegisterClick}>Register</Link>
+        <Link onClick={handleRegisterClick} className="register-link">Register</Link>
     </View>
 }
 

@@ -8,8 +8,9 @@
 @tailwind utilities;
 
 :root {
-  --first-color: rgb(131, 13, 96);
+  --first-color: rgb(114, 61, 122);
   --second-color: rgb(234, 200, 243);
+  --third-color: rgb(94, 42, 103);
 }
 
 * {
@@ -31,14 +32,14 @@ body {
   }
 
   .Button {
-    @apply m-[.5rem_0] p-[.4rem] bg-white font-[1rem] rounded-[5px];
+    @apply m-[.5rem_0] p-[.4rem]  bg-white font-[1rem] rounded-[5px];
   }
   .SubmitButton {
     @apply m-[0.5rem_0];
   }
 
   .Field {
-    @apply flex flex-col m-[0.25rem_0];
+    @apply flex flex-col m-[0.25rem_0] font-bold;
   }
 
   .Image {
@@ -49,7 +50,11 @@ body {
     @apply mb-[.5rem];
   }
   .Text {
-    @apply text-[#beaf24] font-[600];
+    @apply text-[#beaf24] font-bold;
+  }
+
+  .Text.description {
+    @apply text-[--first-color];
   }
   .Time {
     @apply text-black;
@@ -60,7 +65,7 @@ body {
   }
   /* library */
   .FormWithFeedback {
-    @apply p-[1rem] bg-[#DECAA9CC] rounded-[15px] shadow-[5px_5px_6px_2px] shadow-[#0000004D];
+    @apply p-[1rem] bg-[#c9b8aa] rounded-[15px] shadow-[5px_5px_6px_2px] shadow-[#0000004D];
   }
 
   .FormWithFeedback .Feedback.error {
@@ -76,11 +81,11 @@ body {
   }
 
   .View.column {
-    @apply flex-col;
+    @apply flex-col my-5;
   }
 
   .View.row {
-    @apply flex-row gap-[1rem];
+    @apply flex-row justify-between gap-[1rem];
   }
 
   .View.center {
@@ -89,19 +94,23 @@ body {
   /* components */
 
   .CreatePostForm {
-    @apply fixed bottom-[4.5rem] p-[0.5rem] w-full left-0 box-border bg-[white];
+    @apply fixed bottom-[4.5rem] p-[0.5rem] w-full left-0 box-border bg-[transparent];
   }
 
   .Footer {
-    @apply w-full flex justify-center fixed bottom-0 p-[0.5rem_0]  border-t-[var(--first-color)] bg-[#A087B8];
+    @apply w-full flex justify-center fixed bottom-0 p-[0.2rem_0]  border-t-[var(--first-color)] bg-[#A087B8];
   }
 
   .Header {
-    @apply flex gap-[1rem] w-full justify-between fixed top-0 p-[.2rem_1rem]  bg-[#A087B8] items-center;
+    @apply flex gap-[1rem] w-full justify-between fixed top-0 p-[.2rem_10px]  bg-[#A087B8] items-center font-bold;
   }
 
   .PostList {
     @apply m-[60px_10px];
+  }
+
+  h2 {
+    @apply font-bold;
   }
 
   .Alert {
@@ -123,9 +132,19 @@ body {
   .Confirm {
     @apply fixed top-0 left-0 w-full h-full flex justify-center items-center;
   }
+  .ConfirmButtons {
+    @apply flex m-[.5rem_0] p-[.4rem] gap-3 rounded-[5px];
+  }
+
+  .Button-like {
+    @apply text-black my-2 p-0;
+  }
+  .Button-delete {
+    @apply my-2 p-0;
+  }
 
   .ConfirmBox {
-    @apply p-[.4rem] bg-[var(--second-color)] text-[1rem] border-[1px] border-[var(--first-color)] w-[200px] h-[200px];
+    @apply flex flex-col justify-center items-center p-2 bg-[var(--second-color)] text-[1rem] border-[1px] border-[var(--first-color)] w-[200px] h-[130px];
   }
   .Confirm_ {
     padding: 0.4rem;
@@ -138,18 +157,35 @@ body {
     width: 200px;
     height: 100px;
   }
+
+  .logout{
+    background-color: black;
+  }
 }
 
-a_ {
+a {
   position: relative;
   top: 30px;
   padding: 0.4rem 0.9rem 0.4rem 0.9rem;
   border-radius: 5px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--first-color);
   box-shadow: 5px 5px 6px 2px rgba(0, 0, 0, 0.3);
   font-weight: 900;
   font-style: normal;
+  color: white;
 }
+
+.nav-link {
+  top: 0px;
+  padding: 0;
+  border-radius: none;
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: 900;
+  font-style: normal;
+  color: var(--first-color);
+}
+
 h1 {
   font-size: 30px;
   font-family: "Abril Fatface";

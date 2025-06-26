@@ -18,16 +18,32 @@ function Post({ post, onPostDeleted, onPostLikeToggled }) {
 
     const handleDeletePost = () => setConfirmDeleteVisible(true)
 
+    /*  const handleToggleLikePost = () => {
+         try {
+             if (confirm("Delete post?"))
+                 logic.deletePost(post.id)
+                     .then(() => onPostDeleted())
+                     .catch(error => {
+                         console.error(error)
+ 
+                         alert(error.message)
+                     })
+         } catch (error) {
+             console.error(error)
+ 
+             alert(error.message)
+         }
+     } */
+
     const handleToggleLikePost = () => {
         try {
-            if (confirm("Delete post?"))
-                logic.deletePost(post.id)
-                    .then(() => onPostDeleted())
-                    .catch(error => {
-                        console.error(error)
+            logic.toggleLikePost(post.id)
+                .then(() => onPostLikeToggled())
+                .catch(error => {
+                    console.error(error)
 
-                        alert(error.message)
-                    })
+                    alert(error.message)
+                })
         } catch (error) {
             console.error(error)
 
@@ -55,26 +71,23 @@ function Post({ post, onPostDeleted, onPostLikeToggled }) {
 
     return <View tag="article" align="">
         <View direction="row">
-            <Text>{post.author.username}</Text>
-
             <Heading level="2">{post.title}</Heading>
+            <Text>{post.author.username}</Text>
         </View>
 
-        <Image src={post.image} />
-
-        <Text>{post.description}</Text>
-
-        <View direction="row">
-            <Button onClick={handleToggleLikePost}>{`${post.likes.includes(logic.getUserId()) ? '❤️' : '🤍'} ${post.likes.length} like${post.likes.length === 1 ? '' : 's'}`}</Button>
-        </View>
-
-        {/*<View style={{ display: "flex", alignItems: "center", gap: "1rem" }}>*/}
-        <View direction="row">
-            <Time>{post.date}</Time>
-            {post.author.id === logic.getUserId() && <Button className="Button" onClick={handleDeletePost}>Delete</Button>}
-        </View>
-
-        {confirmDeleteVisible && <Confirm message="Delete post?" onAccept={handleDeletePostAccepted} onCancel={handleDeletePostCancelled} />}
+        <section className="Post-footer">
+            <Image src={post.image} />
+            <View direction="row">
+                <Time>{post.date}</Time>
+                {post.author.id === logic.getUserId() && <Button className="Button-delete" onClick={handleDeletePost}>Delete</Button>}
+            </View>
+            <View direction="row">
+                <Button className="Button-like" onClick={handleToggleLikePost}>{`${post.likes.includes(logic.getUserId()) ? '❤️' : '🤍'} ${post.likes.length} like${post.likes.length === 1 ? '' : 's'}`}</Button>
+            </View>
+            <Text className="description">{post.description}</Text>
+            {/*<View style={{ display: "flex", alignItems: "center", gap: "1rem" }}>*/}
+            {confirmDeleteVisible && <Confirm message="Delete post?" onAccept={handleDeletePostAccepted} onCancel={handleDeletePostCancelled} />}
+        </section>
 
     </View>
 }

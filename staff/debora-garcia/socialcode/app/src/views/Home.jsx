@@ -74,11 +74,18 @@ function Home({ onUserLoggedOut }) {
     // cuando creamos el CreatePost form, este recive dos parametros para que es home el que maneja la funcion de los botones
     return <View>
         <Header>
-            <Heading level="3"><Link to="/">Home</Link></Heading>
+            <Heading level="3">
+                <Link className="nav-link" to="/">Home</Link>
+            </Heading>
             <View direction="row">
-                <Heading level="3">{username}</Heading>
-                <Link to="/about">About</Link>
-                <Button onClick={handleLogout}>Logout</Button>
+                <Link className="nav-link" to="/about">About</Link>
+                <Button onClick={handleLogout}>
+                    <div className="flex items-center gap-2">
+                        <Heading level="3">{username}</Heading>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </div>
+                </Button>
+
             </View>
         </Header>
 
