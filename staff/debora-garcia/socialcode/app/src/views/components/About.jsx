@@ -6,7 +6,7 @@ const About = () => {
     return <Text className={"mt-4 p-5 text-[dodgerblue] font-medium text-sm text-center"}>
         <section
             className="items-center justify-center flex flex-col mb-4">
-            <img src="https://koalacareservices.com.au/wp-content/uploads/2023/11/cropped-image-5-2.png" alt="Koala" className="h-24 mb-4 text-center" />
+            <img src="/images/KoalaCare2.png" alt="Koala" className="h-24 mb-4 text-center" />
         </section>
         <p>
             En <strong>KoalaCare</strong>, trabajamos junto a centros de rescate y santuarios de toda Australia con un propósito en común:
